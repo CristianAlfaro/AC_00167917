@@ -50,4 +50,23 @@ one:    add     bx, 1h
 sig:    cmp     bx, 21Fh
         jb      est
 
+;Ejercicio 3
+        mov     ax, 0000h
+        mov     ax, 0d
+        mov     [220h], ax  ; F0 = 0
+        mov     ax, 1d
+        mov     [221h], ax  ; F1 = 1
+        mov     bx, 222h
+fibo:   mov     ax, 0000h
+        mov     [bx], ax
+        sub     bx, 2h
+        mov     al, [bx]
+        add     bx, 1h
+        add     ax, [bx]
+        add     bx, 1h
+        mov     [bx], ax
+        add     bx, 1h
+        cmp     bx, 22Fh
+        jb      fibo
+
 int 20h
