@@ -1,5 +1,6 @@
 org     100h
 
+        ;Ejercicio 1
         mov     ax, 0000h
         add     ax, 6d
         add     ax, 7d
@@ -32,5 +33,21 @@ org     100h
         mov     [20Bh], cl
         mov     cl, "o"
         mov     [20Ch], cl 
+
+        ;Ejercicio 2
+        mov     ax, 0000h
+        mov     al, 2d
+        mov     bx, 210h
+        mov     cx, 2d
+est:    mul     cx
+        mov     [bx], ax
+        cmp     ah, 00h
+        ja      two
+        je      one
+two:    add     bx, 2h
+        jmp     sig
+one:    add     bx, 1h
+sig:    cmp     bx, 21Fh
+        jb      est
 
 int 20h
